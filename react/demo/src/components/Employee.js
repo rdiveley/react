@@ -1,4 +1,9 @@
 function Employee(props) { 
-    return <h3>Here is { props.name}! </h3>
+    return (
+      <>
+            <h3>Employee {props.name}! </h3>
+            {props.role ? <p>{ props.role}</p> : <p>No Role</p>}
+      </>
+    );
 }
 export default Employee;
