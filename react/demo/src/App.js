@@ -5,26 +5,65 @@ import { useState } from 'react';
 function App() {
  
   const showEmployees = true;
+ 
   const [role, setRole] = useState('dev');
+  const [employees, setEmployees] = useState([
+    {
+      name: 'Ray',
+      role: 'Developer',
+      img: 'https://images.pexels.com/photos/775358/pexels-photo-775358.jpeg',
+    },
+    {
+      name: 'Anne',
+      role: 'tester',
+      img: 'https://images.pexels.com/photos/3586798/pexels-photo-3586798.jpeg',
+    },
+
+    {
+      name: 'Marie',
+      role: 'director',
+      img: 'https://images.pexels.com/photos/1840608/pexels-photo-1840608.jpeg',
+    },
+
+    {
+      name: 'John',
+      role: 'dba',
+      img: 'https://images.pexels.com/photos/3748221/pexels-photo-3748221.jpeg',
+    },
+    {
+      name: 'Joan',
+      role: 'Project manager',
+      img: 'https://images.pexels.com/photos/4355346/pexels-photo-4355346.jpeg',
+    },
+  ]);
   return (
-            <div className="App" >
-            
-              {showEmployees ? (
+    <div className="App">
+      {showEmployees ? (
         <>
-          <input type="text" onChange={(e) => { 
-            setRole(e.target.value);
-          } } />
-                  <Employee name="Ray" role="Developer" />
-                  <Employee name="Joe" />
-                  <Employee name="John" />
-                  <Employee role={role} />
-                  <Employee name="Marie" />
-                </>
-              ) : (
-                <p>You cannot see any of the employees</p>
-              )}
-            </div>
-          );
+          <input
+            type="text"
+            onChange={(e) => {
+              setRole(e.target.value);
+            }}
+          />
+          <div className="flex flex-wrap justify-center">
+            {employees.map((employee) => {
+              return (
+                <Employee
+                  name={employee.name}
+                  role={employee.role}
+                  img={employee.img}
+                />
+              );
+            })}
+          </div>
+        </>
+      ) : (
+        <p>can't see em</p>
+      )}
+    </div>
+  );
+            
 }
 
 export default App;
